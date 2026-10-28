@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Luis Mendoza | Programmer Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0d151e;
+      --surface: #15212c;
+      --ink: #e8f0f4;
+      --muted: #9eacb8;
+      --blue: #71b8e3;
+      --blue-dark: #a9d8f1;
+      --brick: #e58b78;
+      --line: #2d3d4b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Source Sans 3', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--brick);
+      outline-offset: 2px;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: #0a1119;
+      color: #fff;
+    }
+
+    .header-inner,
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .school {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: .06em;
+      color: #fff;
+      text-decoration: none;
+      border-left: 4px solid #e6b98a;
+      padding-left: 12px;
+    }
+
+    .sign-out {
+      font: inherit;
+      color: #cdeafa;
+      background: #1d3444;
+      border: 1px solid #3b657f;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+      transition: background-color .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .sign-out:hover {
+      color: #0a1119;
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    /* NAV */
+    .site-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .site-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: 14px 16px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color .2s ease, border-bottom-color .2s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--blue-dark);
+    }
+
+    .site-nav a.active {
+      color: var(--blue-dark);
+      border-bottom-color: var(--brick);
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1100px;
+      margin: 32px auto 48px;
+      padding: 0 24px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    @media (min-width: 880px) {
+      main {
+        grid-template-columns: 300px 1fr;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 76px;
+      }
+    }
+
+    .sidebar,
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .sidebar h2.sidebar-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.75rem;
+      line-height: 1.2;
+      color: var(--blue-dark);
+      background: #1d2a36;
+      border-left: 4px solid var(--brick);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #dce8ef;
+      outline: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #30495c;
+    }
+
+    .sidebar h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--blue-dark);
+    }
+
+    .role {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .sidebar h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--blue);
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+      margin: 22px 0 10px;
+    }
+
+    .contact {
+      list-style: none;
+      text-align: left;
+    }
+
+    .contact li {
+      margin-bottom: 10px;
+      font-size: .95rem;
+      word-break: break-word;
+    }
+
+    .contact span {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .copy-btn {
+      font: inherit;
+      background: none;
+      border: none;
+      color: var(--blue-dark);
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      border-bottom: 1px dashed var(--blue);
+    }
+
+    .copy-btn:hover {
+      color: var(--brick);
+      border-color: var(--brick);
+    }
+
+    .skills {
+      list-style: none;
+      text-align: left;
+    }
+
+    .skills li {
+      font-size: .95rem;
+      padding: 3px 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tags span {
+      background: #233c4d;
+      color: var(--blue-dark);
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 4px;
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 8px 32px 28px;
+    }
+
+    .content section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .content h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .content p,
+    .content li {
+      max-width: 65ch;
+      color: #c5d0d8;
+    }
+
+    .content p {
+      text-align: justify;
+    }
+
+    #profile p + p {
+      margin-top: 12px;
+    }
+
+    .content ul {
+      margin: 6px 0 0 20px;
+    }
+
+    .content li {
+      margin-bottom: 3px;
+    }
+
+    .content li::marker {
+      color: var(--brick);
+    }
+
+    .entry {
+      border-left: 3px solid var(--line);
+      padding-left: 16px;
+      margin-bottom: 16px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry .where {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .entry-description {
+      margin-top: 4px;
+      text-align: left;
+    }
+
+    .entry.current {
+      border-left-color: var(--brick);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      padding: 0 24px 32px;
+    }
+
+    @media (max-width: 520px) {
+      .content {
+        padding: 4px 20px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="school">ALTAIR STATE UNIVERSITY</a>
+      <button type="button" class="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Page sections">
+    <div class="nav-inner">
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <aside class="sidebar">
+      <h2 class="sidebar-title">About Me</h2>
+      <img src="mendoza.jpg" class="avatar" alt="Portrait of Andrei Luis Mendoza" id="avatar">
+      <h1>Andrei Luis Mendoza</h1>
+      <p class="role">3rd Year Information Technology Student</p>
+
+      <h2>Contact Me :</h2>
+      <ul class="contact">
+        <li>
+          <span>Email</span>
+          <button class="copy-btn" data-copy="andreizamora515@gmail.com"
+            title="Click to copy">andreizamora515@gmail.com</button>
+        </li>
+        <li>
+          <span>Phone</span>
+          <button class="copy-btn" data-copy="+63 968 525 9513" title="Click to copy">+63 968 525 9513</button>
+        </li>
+        <li>
+          <span>Address</span>
+          Sto. Rosario, Paombong, Bulacan, Philippines
+        </li>
+      </ul>
+
+      <h2>Proficient in :</h2>
+      <div class="tags" aria-label="Programming languages">
+        <span>Java</span><span>SQL</span><span>HTML</span><span>CSS</span><span>PHP</span><span>JavaScript</span>
+      </div>
+      
+    </aside>
+
+    <article class="content">
+      <section id="profile">
+        <h2>Profile</h2>
+        <p>
+          A motivated IT student with strong foundational skills in web development
+          and programming. Passionate about creating clean, responsive, and
+          user-friendly applications.
+        </p>
+        <p>
+          Experienced in developing backend systems
+          for school projects, including job searching, payroll, and OJT tracking
+          platforms. Enjoys solving problems, learning new technologies, and
+          working collaboratively to turn ideas into reliable and practical
+          solutions.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="entry current">
+          <h3>Bachelor of Science in Information Technology</h3>
+          <p class="where">Bulacan State University &middot; 2024 to present</p>
+        </div>
+        <div class="entry">
+          <h3>Science, Technology, Engineering, and Mathematics</h3>
+          <p class="where">La Consolacion University Philippines &middot; 2020 to 2024</p>
+        </div>
+      </section>
+
+      <section id="hobbies">
+        <h2>Hobbies</h2>
+        <ul>
+          <li>Playing video games</li>
+          <li>Reading</li>
+          <li>Watching anime</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="entry current">
+          <h3>OJT Tracking System - Backend Developer (2026)</h3>
+          <p class="where">School Project</p>
+          <p class="entry-description">Developed backend features for tracking on-the-job training records, requirements, and student progress.</p>
+        </div>
+        <div class="entry">
+          <h3>HireVo - Job Searching Website - Backend Developer (2025)</h3>
+          <p class="where">School Project</p>
+          <p class="entry-description">Built backend functionality for a job searching platform, including job listings, applications, and user data management.</p>
+        </div>
+        <div class="entry">
+          <h3>Kape BulSU! Payroll System - Backend Developer (2025)</h3>
+          <p class="where">School Project</p>
+          <p class="entry-description">Implemented backend features for managing employee records, payroll calculations, and salary-related data.</p>
+        </div>
+      </section>
+
+      <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Cisco Network Addressing and Basic Troubleshooting</li>
+          <li>Cisco Introduction to Cybersecurity</li>
+          <li>Cisco Networking Devices and Initial Configuration</li>
+          <li>Cisco Linux Essentials</li>
+          <li>Cisco Linux Unhatched</li>
+          <li>Cisco Operating Systems Basics</li>
+          <li>Cisco Computer Hardware Basics</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  
+  <script>
+    // Highlight the nav link for the section currently in view
+    const links = document.querySelectorAll('.site-nav a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+
+    function updateActive() {
+      const y = window.scrollY + 120;
+      let current = 0;
+      sections.forEach((s, i) => { if (s.offsetTop <= y) current = i; });
+      // at the very bottom, the last section should win
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 4) {
+        current = sections.length - 1;
+      }
+      links.forEach((a, i) => a.classList.toggle('active', i === current));
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Click email or phone to copy it
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      const original = btn.textContent;
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy);
+          btn.textContent = 'Copied!';
+        } catch (e) {
+          btn.textContent = 'Press Ctrl+C to copy';
+          const r = document.createRange();
+          r.selectNodeContents(btn);
+          getSelection().removeAllRanges();
+          getSelection().addRange(r);
+        }
+        setTimeout(() => (btn.textContent = original), 1500);
+      });
+    });
+
+    // If the photo is missing, show a simple initials placeholder instead
+    document.getElementById('avatar').addEventListener('error', function () {
+      this.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150">' +
+        '<rect width="150" height="150" fill="#30495c"/>' +
+        '<text x="75" y="88" font-family="Arial" font-size="44" text-anchor="middle" fill="#a9d8f1">AM</text></svg>'
+      );
+    }, { once: true });
+  </script>
+</body>
+
+</html>
